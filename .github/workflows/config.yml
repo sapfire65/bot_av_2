@@ -1,0 +1,45 @@
+name: Start script
+
+#on: workflow_dispatch
+
+on:
+  push:
+  workflow_dispatch:
+#  schedule:
+#    - cron: '*/5 * * * *'
+
+
+jobs:
+  Go-pars:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11.5"
+      - uses: actions/checkout@v4
+
+      - name: install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+
+      - name: Run-BOT
+        run: pytest -sv
+
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.CI_TOKEN }}
+          repository: ${{ 'sapfire65/bot_av_2' }}
+          retain_days: 0
+          keep_minimum_runs: 5
+
+
+
+
+
+
+
