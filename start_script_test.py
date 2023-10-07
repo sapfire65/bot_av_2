@@ -1,6 +1,5 @@
 import pytest
 import os
-from data.data_file import DataFile
 from time import sleep
 from base.base_anotation_test import BaseAnatations
 
