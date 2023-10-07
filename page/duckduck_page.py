@@ -30,7 +30,7 @@ class DuckduckPage(BasePage):
     def __init__(self, driver: WebDriver):
         super().__init__(driver)
         self.driver = driver
-        self.wite = WebDriverWait(driver, 15, 1)
+        self.wite = WebDriverWait(driver, 30, 1)
 
     def open_page_duckduck(self):
         self.open(self.URL_DUCKDUCK)
