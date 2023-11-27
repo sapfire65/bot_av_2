@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
@@ -25,6 +26,7 @@ class DuckduckPage(BasePage):
     SEARCH_INPUT = '//input[@id="search_form_input_homepage"]'
     SEARCH_BUTTON = '//input[@id="search_button_homepage"]'
     FIRST_BLOCK_OF_SERP = '//span[@class="result__icon"]'
+    AVITO_LOGO = '//a[@data-marker="search-form/logo"]'
 
 
     def __init__(self, driver: WebDriver):
@@ -45,4 +47,5 @@ class DuckduckPage(BasePage):
         self.click_obj(('xpath', f'{self.FIRST_BLOCK_OF_SERP}'))
         error_text = 'Логотип Авито не прогрузился, значит страница тоже'
         self.check_element_visibility_display(('xpath', self.AVITO_LOGO), 4, error_text)
+
 

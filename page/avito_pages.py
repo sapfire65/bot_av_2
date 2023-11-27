@@ -21,7 +21,7 @@ class Avito(BasePage):
     SELECT_CLEAR_LOCATION_INPUT = '//div[@class="suggest-icon-qI_yN"]'
     LOCALIZATION_INPUT = '(//input[@class="suggest-input-rORJM"])[1]'
     SEARCH_RADIUS = '(//span[@class="styles-module-text-wrapper-TEzPs"]//child::*)[1]'
-
+    AVITO_LOGO = '//a[@data-marker="search-form/logo"]'
     IMAGES_FULL_SCREEN = '//div[@class="image-frame-wrapper-_NvbY"]'
 
 
@@ -36,8 +36,10 @@ class Avito(BasePage):
 
     def logo_click(self):
         """Клик по логотипу Авито, переход на главную страницу"""
-        selector = '//a[@class="Logo-module-root-pYmmC"]'
+        selector = '//a[@data-marker="search-form/logo"]'
         self.click_obj(('xpath', f'{selector}'))
+
+
 
 
     def input_serch_avito(self, search_text):

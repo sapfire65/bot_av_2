@@ -15,7 +15,7 @@ class BasePage:
     """Базовые / общие функции"""
 
     # Авито - общие элементы
-    AVITO_LOGO = '//a[@class="Logo-module-root-pYmmC"]'
+    # AVITO_LOGO = '//a[@data-marker="search-form/logo"]'
 
 
     def __init__(self, driver:WebDriver):
@@ -29,6 +29,10 @@ class BasePage:
         self.driver.get(url)
         self.wite.until(EC.url_to_be(url))
         print(f'Открыта страница: > {url}')
+
+
+    def open_https_nowsecure_nl(self):
+        self.open('https://nowsecure.nl')
 
 
     def find(self, selector):
@@ -132,7 +136,6 @@ class BasePage:
         except TimeoutException:
             self.driver.stop_client()
             self.driver.refresh()
-            self.check_element_visibility_display(expected_time)
         except:
             self.error_info(exception_text)
 
@@ -197,7 +200,7 @@ class BasePage:
         result = re.sub(r"\.\d+", "", data)
         print(f'\n{Fore.YELLOW}{result}{Style.RESET_ALL} >> {Fore.RED}{exception_text}{Style.RESET_ALL}')
         file_name = exception_text
-        self.driver.get_screenshot_as_file(f'screen/{file_name}.png')
+        # self.driver.get_screenshot_as_file(f'screen/{file_name}.png')
         self.driver.quit()
 
     # folder_path = "screen"
