@@ -5,12 +5,12 @@ name: Start script
 on:
   push:
   workflow_dispatch:
-#  schedule:
-#    - cron: '*/5 * * * *'
+  schedule:
+    - cron: '*/15 * * * *'
 
 
 jobs:
-  Go-pars:
+  Go-starting:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +35,7 @@ jobs:
           token: ${{ secrets.CI_TOKEN }}
           repository: ${{ 'sapfire65/bot_av_2' }}
           retain_days: 0
-          keep_minimum_runs: 5
+          keep_minimum_runs: 10
 
 
 
