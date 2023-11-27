@@ -1,13 +1,16 @@
 import pytest
-import os
+from random import randint
+# import os
 from time import sleep
 from base.base_anotation_test import BaseAnatations
 
 
 
 class TestStartScript(BaseAnatations):
+
     def test_start_avito_bot(self):
         # self.base_page.open_https_nowsecure_nl()
+        sleep(randint(77, 777))
         self.duckduck_page.open_page_duckduck()
         self.duckduck_page.way_to_avito()
         self.avito_pages.logo_click()
@@ -20,7 +23,7 @@ class TestStartScript(BaseAnatations):
         self.client_page.view_pictures()
         self.client_page.serch_in_map()
         self.client_page.click_show_phone_button()
-        # self.client_page.click_add_too_favorites()
+        self.client_page.click_add_too_favorites(2)
 
         sleep(10)
 

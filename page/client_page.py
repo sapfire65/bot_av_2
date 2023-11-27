@@ -79,14 +79,19 @@ class Clientpage(BasePage):
             self.driver.execute_script("window.scrollBy(0, -50);")
             self.random_delay(.1, .3)
 
-    def click_add_too_favorites(self):
-        """Клик по кнопке добавление в избранное и убеждаемся, что действительно добавлено после клика"""
-        self.random_delay(.5, 1.5)
-        self.click_obj(('xpath', self.ADD_TO_FAVORITES), message='Кнопка лайка не нажата')
-        self.random_delay(1.0, 3.0)
+    def click_add_too_favorites(self, enable_value: int =  0):
+        """Клик по кнопке добавление в избранное и убеждаемся, что действительно добавлено после клика
 
-        self.find(('xpath', self.IN_FAVORITES))
-        print(f'{Fore.YELLOW}В избранное:{Style.RESET_ALL}{Fore.CYAN} добавлено{Style.RESET_ALL}')
+        Params:
+            enable__value: int - значение от 1 - 10. Чем выше значение тем чаще срабатывает функция.
+        """
+        if randint(1, 10) >= enable_value:
+            self.random_delay(.5, 1.5)
+            self.click_obj(('xpath', self.ADD_TO_FAVORITES), message='Кнопка лайка не нажата')
+            self.random_delay(1.0, 3.0)
+
+            self.find(('xpath', self.IN_FAVORITES))
+            print(f'{Fore.YELLOW}В избранное:{Style.RESET_ALL}{Fore.CYAN} добавлено{Style.RESET_ALL}')
 
     def read_ad_text(self):
         # self.open('https://www.avito.ru/moskva/predlozheniya_uslug/razrabotka_logotipa_firmennyy_stil_2919373342')
