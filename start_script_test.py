@@ -23,7 +23,7 @@ class TestStartScript(BaseAnatations):
         self.client_page.view_pictures()
         self.client_page.serch_in_map()
         self.client_page.click_show_phone_button()
-        self.client_page.click_add_too_favorites(2)
+        self.client_page.click_add_too_favorites(9)
 
         sleep(10)
 
