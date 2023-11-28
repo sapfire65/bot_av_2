@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from random import randint
 
 
 URL = 'https://www.useragents.me/'
@@ -8,6 +9,7 @@ defoult_user_agent = {
 
 def random_ua() -> str:
     """Парсит актуальный агенты и возвращает рандомный"""
+
     my_set = set()
     responce = requests.get(URL, headers=defoult_user_agent).text
     soup = BeautifulSoup(responce, 'lxml')
@@ -15,8 +17,13 @@ def random_ua() -> str:
 
     for i in textarea:
         my_set.add(i.text)
-    random_agent = list(my_set)[1]
+
+    random_agent = list(my_set)
+    random_count = randint(1, len(random_agent))
+
+    random_agent = list(my_set)[random_count]
     return random_agent
+
 
 
 
