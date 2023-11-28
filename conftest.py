@@ -2,14 +2,16 @@ import os
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from get_user_agent_pls import fetch_user_agent
+# from get_user_agent_pls import fetch_user_agent
+from update_user_agents_list import random_ua
 from colorama import Fore, Style
 
 
 @pytest.fixture(scope='function', autouse=True)
 def driver(request):
     # Генерация случайного user-agent
-    ua_string = fetch_user_agent()
+    # ua_string = fetch_user_agent()
+    ua_string = random_ua()
 
     print(f'\n{Fore.GREEN}user-agent: {ua_string} {Style.RESET_ALL}')
 
