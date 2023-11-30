@@ -26,11 +26,3 @@ def random_ua() -> str:
 
 
 
-
-
-
-
-
-
-
-
